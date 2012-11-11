@@ -19,15 +19,16 @@ public class PreferenceActivity extends SherlockPreferenceActivity {
 		languagePreference
 				.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
 					@Override
-					public boolean onPreferenceChange(Preference preference,
+					public boolean onPreferenceChange(Preference preference, // NOPMD by MANJUPRABHUV on 11/11/12 12:44 PM
 							Object lang) {
-						String sNewlang = (String) lang;
-						if (!sNewlang.equalsIgnoreCase(sLang)) {
+						final String sNewlang = (String) lang;
+						if (sNewlang.equalsIgnoreCase(sLang)) {
+							PreferenceActivity.this.finish();
+							
+						}else{
 							Intent intent = new Intent(getApplicationContext(),
 									ProofReadActivity.class);
 							startActivity(intent);
-						}else{
-						PreferenceActivity.this.finish();
 						}
 						return true;
 					}
